@@ -1,0 +1,13 @@
+name: tests
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install dependencies
+        run: sudo apt-get update && sudo apt-get install -y lua5.4 python3-evdev
+      - name: Lua syntax
+        run: for f in $(find mod tools -name '*.lua'); do luac5.4 -p "$f"; done
+      - name: "Tests (offline - fake wheel, fake force-feedback device, mock vehicle)"
+        run: python3 -m unittest discover -s tests -v

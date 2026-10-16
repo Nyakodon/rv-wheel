@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+*.egg-info/
+.pytest_cache/
+
+# release archives / local build output
+*.tar.gz
+*.zip
+dist/
+build/
+
+# local config and scratch (the real settings live in ~/.config/rv-wheel/)
+config.json
+*.tmp
+*.log
+*.csv
+
+# editors / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store

@@ -1,0 +1,21 @@
+RV There Yet? - steering wheel mod  (quick start)
+
+Needs: Linux, Steam/Proton, python-evdev, your user in the "input" group.
+
+1. Plug in the wheel (and any stalk / handbrake / button box), then:
+                                 ./rv_wheel.py setup        (follow the prompts: centre, turn, rotation range, pedals,
+                                                             then press a button or push an axis on ANY device per action)
+2. CLOSE the game, then:         ./rv_wheel.py install-mod  (installs UE4SS + the RVWheel mod)
+3. Steam > game > Properties > Launch Options, paste:
+                                 WINEDLLOVERRIDES="dwmapi=n,b" %command%
+4. (optional) force feedback:    ./rv_wheel.py ffb-test     (if left/right feel swapped: "ffb": {"invert": true})
+5. Start the game, then:         ./rv_wheel.py mod          (keep it running while you play; F8 in game = wheel on/off)
+
+No game changes wanted?          ./rv_wheel.py run          (virtual gamepad mode, skip steps 2-3)
+Try without a wheel:             ./rv_wheel.py mod --sim demo
+Remove everything:               ./rv_wheel.py uninstall-mod --all   (and clear the launch option)
+
+Works side by side with the separate rv-restore mod (shared UE4SS and launch option; uninstall --all keeps UE4SS
+while rv-restore is still installed).
+
+Details: README.md     Tests: python3 -m unittest discover -s tests
